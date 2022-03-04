@@ -1,9 +1,17 @@
 
 <div *ngIf='!loaders.stops && !loaders.trackingPoints'>
-<button  (click)="startTracking()" >start Tracking</button>
+<button  (click)="startTracking()" >Start Simulation</button>
 <agm-map [latitude]="busPosition.lat" [longitude]="busPosition.lng" [zoom]="16" [disableDefaultUI]="false" [zoomControl]="false"
  (mapClick)="mapClicked($event)">
-	<agm-marker *ngFor="let stop of stops" [latitude]="stop.lat" [longitude]="stop.lng"></agm-marker>
+	<agm-circle *ngFor="let stop of stops" [latitude]="stop.lat" [longitude]="stop.lng"
+	[radius]="20"
+	[fillColor]="'red'"
+	[circleDraggable]="false"
+	[fillOpacity]='1'
+	[editable]="false">
+	></agm-circle>
+
+
   <agm-marker  [latitude]="busPosition.lat" [longitude]="busPosition.lng"></agm-marker>
 	<agm-polyline strokeColor="blue">
 		<agm-polyline-point *ngFor="let point of busTrackingPoints" [latitude]="point.lat" [longitude]="point.lng"></agm-polyline-point>
