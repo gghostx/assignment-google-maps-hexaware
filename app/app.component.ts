@@ -31,7 +31,7 @@ index: number;
 
   startTracking() {
     console.log('gggg')
-    this.index = 0;
+    this.index = 1;
        this.interval = setInterval(() => {
         this.busTracking(); 
       }, 2000);
