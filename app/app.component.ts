@@ -29,6 +29,23 @@ export class AppComponent {
   }
 
   startTracking() {
-    console.log(this.busPosition);
+    console.log('gggg')
+    var i = 0;
+       this.interval = setInterval(() => {
+        this.busTracking(i); 
+      }, 2000);
+       }
+  busTracking(i) {
+
+    if(i == this.busTrackingPoints.length-1){
+      clearInterval(this.interval);
+  
+    }
+    else{
+   this.busPosition = this.busTrackingPoints[i];
+   i++;
+   console.log(i)
+    }
   }
+  
 }
