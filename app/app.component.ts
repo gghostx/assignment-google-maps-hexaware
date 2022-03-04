@@ -1,61 +1,89 @@
 import { Component } from '@angular/core';
-import { MouseEvent } from '@agm/core';
+
+import { Observable } from 'rxjs';
+import { DataService } from './data.service';
+
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent  {
+export class AppComponent {
   // google maps zoom level
-  zoom: number = 8;
-  
-  // initial center position for the map
-  lat: number = 51.673858;
-  lng: number = 7.815982;
+  zoom: number = 16;
 
-  clickedMarker(label: string, index: number) {
-    console.log(`clicked the marker: ${label || index}`)
-  }
-  
-  mapClicked($event: MouseEvent) {
-    this.markers.push({
-      lat: $event.coords.lat,
-      lng: $event.coords.lng,
-      draggable: true
-    });
-  }
-  
-  markerDragEnd(m: marker, $event: MouseEvent) {
-    console.log('dragEnd', m, $event);
-  }
-  
-  markers: marker[] = [
-	  {
-		  lat: 51.673858,
-		  lng: 7.815982,
-		  label: 'A',
-		  draggable: true
-	  },
-	  {
-		  lat: 51.373858,
-		  lng: 7.215982,
-		  label: 'B',
-		  draggable: false
-	  },
-	  {
-		  lat: 51.723858,
-		  lng: 7.895982,
-		  label: 'C',
-		  draggable: true
-	  }
+  // initial center position for the map
+
+  busPosition = {
+    lat: 50.082730,
+    lng: 14.431697
+  };
+  stops = [];
+  busTrackingPoints = [
+    {
+      lat: 50.082911,
+      lng: 14.431411
+    },
+    {
+      lat: 50.083202,
+      lng: 14.430994
+    },
+    {
+      lat: 50.083352,
+      lng: 14.430780
+    },
+    {
+      lat: 50.083491,
+      lng: 14.430569
+    },
+    {
+      lat: 50.083644,
+      lng: 14.430367
+    }
   ]
+constructor(private dataService:DataService){
+
+}
+
+  ngOnInit() {
+this.dataService.getStops().then((res)=>{
+console.log(res)
+})
+
+    // let i = 0;
+    // const obs = Observable.interval(2000)
+    //   .takeWhile((v) =>  i < this.tmpPoints.length)
+    //   .subscribe(() => {
+    //     const pos = this.tmpPoints[i];
+    //     this.points.push(pos);
+    //     this.currentPos = pos;
+    //     i++;
+    //   })
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 // just an interface for type safety.
-interface marker {
-	lat: number;
-	lng: number;
-	label?: string;
-	draggable: boolean;
+interface point {
+  lat: number;
+  lng: number;
 }
