@@ -38,45 +38,66 @@ export class AppComponent {
       lng: 14.430367
     }
   ];
+interval: number;
+loaders= {stops : true,trackingPoints:true};
   constructor(private dataService :DataService ) {}
  
 
 
   ngOnInit() {
 this.dataService.getStops().then((res)=>{
-console.log(res)
-})
+this.stops = res;
+this.loaders.stops = false;
+});
+this.dataService.getTrackingPoints().then((res)=>{
+ this.busTrackingPoints = res;
+ this.busPosition = res[0];
+ this.loaders.trackingPoints = false
+  });
 
-    // let i = 0;
-    // const obs = Observable.interval(2000)
-    //   .takeWhile((v) =>  i < this.tmpPoints.length)
-    //   .subscribe(() => {
-    //     const pos = this.tmpPoints[i];
-    //     this.points.push(pos);
-    //     this.currentPos = pos;
-    //     i++;
-    //   })
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 }
+
+
+public startTracking(){
+  let i = 0;
+     this.interval = setInterval(() => {
+      this.busTracking(i); 
+    }, 2000);
+     }
+busTracking(i) {
+
+  if(i == this.busTrackingPoints.length-1){
+    clearInterval(this.interval);
+
+  }
+  else{
+ this.busPosition = this.busTrackingPoints[i]
+  }
+}
+}
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // just an interface for type safety.
 interface point {

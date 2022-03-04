@@ -15,4 +15,16 @@ export class DataService {
         });
     });
   }
+
+
+getTrackingPoints():Promise<any> {
+  return new Promise((resolve, reject) => {
+    this.httpService
+      .get('https://61a4a0604c822c0017041d33.mockapi.io/shuttle/v1/path')
+      .subscribe((res: any) => {
+        console.log(res)
+        resolve(res);
+      });
+  });
+}
 }
