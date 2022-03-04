@@ -14,7 +14,7 @@ export class AppComponent {
   busTrackingPoints = [];
   interval: number;
   public loaders = { stops: true, trackingPoints: true };
-index: number;
+  index: number;
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
@@ -30,23 +30,18 @@ index: number;
   }
 
   startTracking() {
-    console.log('gggg')
     this.index = 1;
-       this.interval = setInterval(() => {
-        this.busTracking(); 
-      }, 2000);
-       }
+    this.interval = setInterval(() => {
+      this.busTracking();
+    }, 2000);
+  }
   busTracking() {
-    console.log('111')
-    if(this.index == this.busTrackingPoints.length-1){
+    if (this.index == this.busTrackingPoints.length - 1) {
       clearInterval(this.interval);
-  
-    }
-    else{
-   this.busPosition = this.busTrackingPoints[this.index];
-   this.index++;
-   console.log(this.index)
+    } else {
+      this.busPosition = this.busTrackingPoints[this.index];
+      this.index++;
+      console.log(this.index);
     }
   }
-  
 }
