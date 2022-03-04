@@ -13,7 +13,7 @@ import { DataService } from './data.service';
     BrowserModule, FormsModule,HttpClientModule,
   
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAt5rtRPBpBbzo6El2m0SjxmHTAXtCVOK0'
+      apiKey: 'AIzaSyDvBaTr3ZebYY2o2bdIJajbNYJSX1NcIwg'
     })
   ],
   providers:[DataService],
