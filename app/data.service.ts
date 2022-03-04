@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 export class DataService {
   constructor(private httpService: HttpClient) {}
 
-  getStops() {
+  getStops():Promise<any> {
     return new Promise((resolve, reject) => {
       this.httpService
         .get('https://61a4a0604c822c0017041d33.mockapi.io/shuttle/v1/stops')

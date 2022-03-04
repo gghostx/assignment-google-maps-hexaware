@@ -1,6 +1,7 @@
+import { DataMouseEvent } from '@agm/core/map-types';
 import { Component } from '@angular/core';
 
-import { Observable } from 'rxjs';
+
 import { DataService } from './data.service';
 
 
@@ -10,11 +11,6 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // google maps zoom level
-  zoom: number = 16;
-
-  // initial center position for the map
-
   busPosition = {
     lat: 50.082730,
     lng: 14.431697
@@ -41,10 +37,10 @@ export class AppComponent {
       lat: 50.083644,
       lng: 14.430367
     }
-  ]
-constructor(private dataService:DataService){
+  ];
+  constructor(private dataService :DataService ) {}
+ 
 
-}
 
   ngOnInit() {
 this.dataService.getStops().then((res)=>{
