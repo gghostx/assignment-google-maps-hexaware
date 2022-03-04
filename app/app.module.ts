@@ -13,9 +13,7 @@ import { DataService } from './data.service';
     BrowserModule, FormsModule,HttpClientModule,
   
     AgmCoreModule.forRoot({
-      // please get your own API key here:
-      // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
-      apiKey: 'AIzaSyAvcDy5ZYc2ujCS6TTtI3RYX5QmuoV8Ffw'
+      apiKey: 'AIzaSyAt5rtRPBpBbzo6El2m0SjxmHTAXtCVOK0'
     })
   ],
   providers:[DataService],
