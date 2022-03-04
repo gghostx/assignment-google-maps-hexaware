@@ -41,7 +41,6 @@ export class AppComponent {
     } else {
       this.busPosition = this.busTrackingPoints[this.index];
       this.index++;
-      console.log(this.index);
     }
   }
 }
