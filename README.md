@@ -1,3 +1,2 @@
-# angular-google-maps-demo-hasrmm
-
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-google-maps-demo-hasrmm)
+# angular-assignment
+//this a angular maps integration demo, to show how a vehicle can be tracked getting the latitude and longitude and plot exact location on google maps. this is only for demp purpose and did it as an assignment by hexaware.
