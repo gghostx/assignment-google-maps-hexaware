@@ -13,12 +13,17 @@
   >
     Stop Simulation
   </button>
+  <button
+  class="primary-button"
+  (click)="recenter()"
+>
+Re-Center
+</button>
   <agm-map
     [latitude]="busPosition.lat"
     [longitude]="busPosition.lng"
-    [zoom]="16"
+    [zoom]="zoom"
     [disableDefaultUI]="false"
-    [zoomControl]="false"
   >
     <agm-circle
       *ngFor="let stop of stops"
