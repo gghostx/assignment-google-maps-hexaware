@@ -1,5 +1,18 @@
 <div *ngIf="!loaders.stops && !loaders.trackingPoints">
-  <button (click)="startTracking()">Start Simulation</button>
+  <button
+    class="primary-button"
+    [ngClass]="{ disabled: index > 1 ? true : false }"
+    (click)="startTracking()"
+  >
+    Start Simulation
+  </button>
+  <button
+    class="primary-button"
+    [ngClass]="{ disabled: index == 1 ? true : false }"
+    (click)="stopSimulation()"
+  >
+    Stop Simulation
+  </button>
   <agm-map
     [latitude]="busPosition.lat"
     [longitude]="busPosition.lng"
