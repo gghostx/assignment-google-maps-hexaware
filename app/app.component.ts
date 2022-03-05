@@ -15,8 +15,8 @@ export class AppComponent {
   interval: number;
   zoom: number = 16;
   public loaders = { stops: true, trackingPoints: true };
- public index: number= 1;
-zm: boolean;
+  public index: number = 1;
+  zm: boolean;
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
@@ -46,22 +46,19 @@ zm: boolean;
       this.index++;
     }
   }
-  stopSimulation(){
+  stopSimulation() {
     clearInterval(this.interval);
     this.index = 1;
     this.busPosition = this.busTrackingPoints[0];
   }
-  recenter(){  
+  recenter() {
     //will add functionality to recenter to bring map center to bus agnain and reset the zoom level
-    if(this.zm){
-              this.zm = false
-              this.zoom = 15;
-              
-            }
-            else{
-              this.zm = true
-              this.zoom = 16;
-            }
+    if (this.zm) {
+      this.zm = false;
+      this.zoom = 15;
+    } else {
+      this.zm = true;
+      this.zoom = 16;
+    }
   }
-  
 }
